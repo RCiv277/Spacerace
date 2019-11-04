@@ -21,7 +21,7 @@ let currentSpeed = 0
 
 /**
  * Movement and orientation Functions
- * @function movementAndRotation : This function calculates the ships current speed and direction by taking the users inputs of Angle and Speed and contrasting themm against eachother 
+ * @function movementAndRotation() : This function calculates the ships current speed and direction by taking the users inputs of Angle and Speed and contrasting themm against eachother 
  *  */                                                                      
 
 
@@ -56,7 +56,7 @@ else if (userInputAngle >= 0){  // ◢ x , y
     distanceTravX = Math.cos(userInputAngle) * userInputSpeed
 }
 
-
+movementAndRotation()
 }
 
 function movementAndRotation(){

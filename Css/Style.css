@@ -1,0 +1,19 @@
+
+body{
+    background-color:black
+}
+#main-menu {
+    color: silver;
+    position: relative;
+    float: left;
+    width:51%;
+}
+
+
+.ship {
+    transform: rotate(0deg);
+}
+
+
+
+/* transform: rotate(0deg)
