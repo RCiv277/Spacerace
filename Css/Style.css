@@ -2,8 +2,10 @@
 body{
     background-color:black
 }
+#main-menus {
+    display:   inline    /*inline;*/ 
+}
 .main-menu {
-    display:none;
     text-align: center;
     color: silver;
     position: relative;
@@ -27,13 +29,14 @@ body{
 }
 
 #directions{
-    display: flex;
+    display: none;
     justify-content: center;
     width: 90%;
     color: black;
     text-align: left;
 }
-ul{
+
+ #how-to-play{
     position:relative;
     border-radius: 10px;
     border-color: slategray;
@@ -48,7 +51,7 @@ ul{
 }
 
 
-li{
+.rules-list{
     padding: 10px;
     font-size:40px;
     font-family: serif;
@@ -57,6 +60,58 @@ h2{
     font-size: 90px;
     margin: 30px;
 }
-    
+
+#return{
+    height: 60px;
+    width: 70px;
+    background-color: silver;
+}
+
+
+#map{
+    display:none;
+}
+
+#map-ship{
+    position: absolute;
+    top: 50%;
+    display: block;
+    margin: 0 auto;
+    height: 70px;
+    width: 70px;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+
+#input-screen{
+    display: none;
+}
+
+#pop-up-ship{
+    position: absolute;
+    top: 50%;
+    display: block;
+    margin: 0 auto;
+    height: 200px;
+    width: 200px;
+    transform: translate(-50%, -50%);
+    left: 20%;
+}
+#pop-up-menu{
+    top: 33%;
+    position: absolute;
+    border:0;
+    width: 20%;
+    left: 25%;
+    list-style-type: none;
+}
+
+.menu-list{
+    text-align: center;
+    display:grid;
+    height: 70px;
+    font-size:40px;
+    font-family: serif;
+}
 
 /* transform: rotate(0deg)

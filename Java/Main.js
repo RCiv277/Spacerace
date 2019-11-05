@@ -13,12 +13,23 @@ let currentSpeed = 0
 document.getElementById('play').addEventListener('click' , reactToPlay)  //play
 function reactToPlay(){
     document.getElementById('main-menus').style.display = 'none'
+    document.getElementById('map').style.display = 'flex'
 }
-document.getElementById('rules').addEventListener('click' , reactToRules)
+document.getElementById('rules').addEventListener('click' , reactToRules) //direction
 function reactToRules(){
     document.getElementById('main-menus').style.display = 'none'
+    document.getElementById('directions').style.display = 'flex'
 }
-
+document.getElementById('return').addEventListener('click' , reactToReturn) //return from direction
+function reactToReturn(){
+    document.getElementById('main-menus').style.display = 'inline'
+    document.getElementById('directions').style.display = 'none'
+}
+document.getElementById('map-ship').addEventListener('click' ,reactToMapShip)
+function reactToMapShip(){
+    document.getElementById('map').style.display = 'none'
+    document.getElementById('input-screen').style.display = 'flex'
+}
 /**
  *  User Input a Move Menu!
  * */                                                                      
@@ -87,4 +98,5 @@ else if (xSpeed < 0){ //negative x
  *  Highscore Stuff
  * 
  * 
- *  */                                                                     
+ *  */                 
+

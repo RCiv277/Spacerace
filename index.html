@@ -17,24 +17,36 @@
     </ul>
   </div>
   <div id='directions'>
-    <ul>
-        <h2>How to Play</h2>
-        <li>There are three speeds your ship can be set to:</li>
+    <ul id='how-to-play'>
+        <h2>How to Play<button id='return'></button></h2>
+        <li class='rules-list'>There are three speeds your ship can be set to:</li>
           <ul id = 'fastness'>
-            <li>Fast - 2m/Turn</li>
-            <li>Slow - 1m/Turn</li>
-            <li>Coast - 0m/Turn</li>
+            <li class='rules-list'>Fast - 2m/Turn</li>
+            <li class='rules-list'>Slow - 1m/Turn</li>
+            <li class='rules-list'>Coast - 0m/Turn</li>
           </ul>
-        <li>You can set the rotation of your ship to any degrees between 0(starting eastward!) to 360(also eastward!)</li>
-        <li>Now remember your ship will continue to move at what ever speed you set</li>
-        <li>So if you're moving too fast you will fly out of the assigned testing area!<li>
+        <li class= 'rules-list'>You can set the rotation of your ship to any degrees between 0(starting eastward!) to 360(also eastward!)</li>
+        <li class= 'rules-list'>Now remember your ship will continue to move at what ever speed you set</li>
+        <li class= 'rules-list'>So if you're moving too fast you will fly out of the assigned testing area!<li>
     </ul>
-
-
-
-
-
-  </div>
+    </div>
+    <div id='map'>
+        <img id='map-ship' src="./Image/shh.png" >
+    </div>
+    <div id= 'input-screen'>
+      <img id='pop-up-ship' src="./Image/shh.png" >
+        <ul id=pop-up-menu>
+          <ls class='menu-list'><button class='menu-button' id="speed-input">Speed</button></ls>
+          <ls class='menu-list'><button class='menu-button' id='rotation-input'>Rotation</button></ls>
+          <ls class='menu-list'><button class='menu-button' id='launch'>GO!</button></ls>
+          <ls class='menu-list'><button class='menu-button' id='to-map'></button></ls>
+        </ul>
+        <ul id=pop-up-speed>
+          <ls class='pop-up-menu-list'><button id='fast-bttn'>Fast</button></ls>
+          <ls class='pop-up-menu-list'><button id='slowb-ttn'>Slow</button></ls>
+          <ls class='pop-up-menu-list'><button id='coast-bttn'>Coast</button></ls>
+        </ul>
+    </div>
 
 
 
