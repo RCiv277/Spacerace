@@ -32,7 +32,45 @@ function reactToMapShip(){
 }
 /**
  *  User Input a Move Menu!
- * */                                                                      
+ * */      
+
+ document.getElementById('speed-input').addEventListener('click' , reactToSpeedInput)
+ function reactToSpeedInput(){
+     document.getElementById('pop-up-speed').style.display = 'inline'
+    }
+    
+    document.getElementById('fast-bttn').addEventListener('click' , reactToFastBttn)
+    function reactToFastBttn(){
+        document.getElementById('speed-input').innerHTML = 'Fast'
+        document.getElementById('speed-input').style.backgroundColor = 'green'
+        userInputSpeed = 2
+        document.getElementById('pop-up-speed').style.display = 'none'
+    }
+    
+    document.getElementById('slow-bttn').addEventListener('click' , reactToSlowBttn)
+    function reactToSlowBttn(){
+        document.getElementById('speed-input').innerHTML = 'Slow'
+        document.getElementById('speed-input').style.backgroundColor = 'green'
+        userInputSpeed = 1
+        document.getElementById('pop-up-speed').style.display = 'none'
+    }
+    
+    document.getElementById('coast-bttn').addEventListener('click' , reactToCoastBttn)
+    function reactToCoastBttn(){
+        document.getElementById('pop-up-speed').style. = 'inline'
+        document.getElementById('speed-input').style.backgroundColor = 'green'
+        userInputSpeed = 0
+        document.getElementById('pop-up-speed').style.display = 'none'
+
+ }
+
+
+
+
+
+
+
+
 
 
 

@@ -2,6 +2,10 @@
 body{
     background-color:black
 }
+button{
+    background-color: white;
+    color: silver;
+}
 #main-menus {
     display:   inline    /*inline;*/ 
 }
@@ -17,6 +21,7 @@ body{
         margin-bottom: 0px;
     }
 .main-menu button{
+    background-color: white;
     width: 55%;
     top: 55%;
     font-size:40px;
@@ -114,4 +119,31 @@ h2{
     font-family: serif;
 }
 
+#pop-up-speed{
+        display:none;
+        top: 25.9%;
+        position: absolute;
+        border:0;
+        width: 20%;
+        left: 45.1%;
+        list-style-type: none;
+    }
+
+.pop-up-menu-list{
+    text-align: center;
+    display:grid;
+    height: 70px;
+    font-size:40px;
+    font-family: serif;
+    
+}
+.menu-button{
+    font-size:50px;
+    text-align: left;
+}
+
+
+#launch{
+    background-color: red;
+}
 /* transform: rotate(0deg)
