@@ -10,8 +10,12 @@ let currentSpeed = 0
  * Main Menu
  * 
  * */                                                                       
-
-
+document.getElementById('play').addEventListener('click' , reactToPlay)
+function reactToPlay(){
+    let mainMenu = document.getElementsByClassName('main-menu')
+    //mainMenu.style.display = 'none'
+    document.getElementById('main-menus').style.display = 'none'
+}
 
 /**
  *  User Input a Move Menu!

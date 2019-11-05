@@ -2,11 +2,27 @@
 body{
     background-color:black
 }
-#main-menu {
+.main-menu {
+    text-align: center;
     color: silver;
     position: relative;
-    float: left;
-    width:51%;
+    
+}
+
+ h1{
+        font-size: 170px;
+        margin-bottom: 0px;
+    }
+.main-menu button{
+    width: 55%;
+    top: 55%;
+    font-size:40px;
+    padding: 25px;
+    margin: 20px;
+    text-align: left;
+}
+#play{
+    margin-top: 175px;
 }
 
 
