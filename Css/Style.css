@@ -3,6 +3,7 @@ body{
     background-color:black
 }
 .main-menu {
+    display:none;
     text-align: center;
     color: silver;
     position: relative;
@@ -25,11 +26,37 @@ body{
     margin-top: 175px;
 }
 
-
-.ship {
-    transform: rotate(0deg);
+#directions{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    color: black;
+    text-align: left;
+}
+ul{
+    position:relative;
+    border-radius: 10px;
+    border-color: slategray;
+    border: 10px;
+    background-color: silver;
+    width: 90%;
+    padding: 20px;
+    list-style-type: none;
+}   
+#fastness{
+    vertical-align: top;
 }
 
 
+li{
+    padding: 10px;
+    font-size:40px;
+    font-family: serif;
+}
+h2{
+    font-size: 90px;
+    margin: 30px;
+}
+    
 
 /* transform: rotate(0deg)

@@ -10,10 +10,12 @@ let currentSpeed = 0
  * Main Menu
  * 
  * */                                                                       
-document.getElementById('play').addEventListener('click' , reactToPlay)
+document.getElementById('play').addEventListener('click' , reactToPlay)  //play
 function reactToPlay(){
-    let mainMenu = document.getElementsByClassName('main-menu')
-    //mainMenu.style.display = 'none'
+    document.getElementById('main-menus').style.display = 'none'
+}
+document.getElementById('rules').addEventListener('click' , reactToRules)
+function reactToRules(){
     document.getElementById('main-menus').style.display = 'none'
 }
 
