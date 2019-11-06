@@ -78,7 +78,8 @@ function reactToMapShip(){
                 document.getElementById('rotation-input').style.backgroundColor = 'green' ,
                 goReady() ,
                 document.getElementById('rotation-input').innerHTML = `${document.getElementById('angle-input').value}` ,
-                userInputAngle = Number(document.getElementById('angle-input').value)
+                userInputAngle = Number(document.getElementById('angle-input').value) ,
+                document.getElementById('pop-up-ship').style.transform = `rotate(${userInputAngle * -1}deg)`
                 )
             }
         }
@@ -116,7 +117,7 @@ function reactToMapShip(){
 
 
 let userInputSpeed = 2 //Placeholder
-let userInputAngle = 45 //Placeholder
+let userInputAngle = Number(document.getElementById('angle-input').value) //Placeholder
 let distanceTravX = 0
 let distanceTravY = 0
 
@@ -162,16 +163,22 @@ function movementAndRotation(){
     currentSpeed = Math.sqrt((xSpeed * xSpeed) + (ySpeed * ySpeed))
     distanceTraveled = distanceTraveled + currentSpeed
     //Helps determine the distance for scoring
-    shipOrientation = Math.abs(Math.atan((ySpeed) / (xSpeed)) * (180/Math.PI))
 if (xSpeed >= 0){ //positive x
-    ySpeed >= 0 ? document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)` : 
-    (shipOrientation = shipOrientation + 270 , document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) ;
+    ySpeed >= 0.001 ? ((shipOrientation = Math.abs(Math.atan((ySpeed) / (xSpeed)) * (180/Math.PI))) ,       // ◢ x , y
+    document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)` ) : 
+    ((shipOrientation = Math.abs(Math.atan((xSpeed) / (ySpeed)) * (180/Math.PI)) ,                          // ◣ x , -y
+    (shipOrientation = shipOrientation + 270)) ,
+    document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) ;
     }
 else if (xSpeed < 0){ //negative x
-    ySpeed >= 0 ? shipOrientation = (shipOrientation + 90 , document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) :
-    (shipOrientation = shipOrientation + 180 , document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`);
+    ySpeed >= 0.001 ? ((shipOrientation = Math.abs(Math.atan((xSpeed) / (ySpeed)) * (180/Math.PI))),        // ◥ -x , y
+    (shipOrientation = shipOrientation + 90) ,
+    document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) :           // ◤ -x , -y
+    ((shipOrientation = Math.abs(Math.atan((xSpeed) / (ySpeed)) * (180/Math.PI))), 
+    (shipOrientation = shipOrientation + 180) , 
+    document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`);
     }
-
+    // Sets the orientation for which direction the ship will be facing after computations
 }
 
 /**

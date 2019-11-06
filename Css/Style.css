@@ -84,8 +84,8 @@ h2{
     margin: 0 auto;
     height: 70px;
     width: 70px;
-    transform: translate(-50%, -50%);
     left: 50%;
+    transform-origin: center;
 }
 
 #input-screen{
@@ -94,13 +94,13 @@ h2{
 
 #pop-up-ship{
     position: absolute;
-    top: 50%;
+    top: 40%;
     display: block;
     margin: 0 auto;
     height: 200px;
     width: 200px;
-    transform: translate(-50%, -50%);
-    left: 20%;
+    left: 13%;
+    transform-origin: center;
 }
 #pop-up-menu{
     top: 33%;
