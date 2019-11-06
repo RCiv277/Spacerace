@@ -45,6 +45,7 @@ function reactToMapShip(){
         document.getElementById('speed-input').style.backgroundColor = 'green'
         userInputSpeed = 2
         document.getElementById('pop-up-speed').style.display = 'none'
+        goReady()
     }
     
     document.getElementById('slow-bttn').addEventListener('click' , reactToSlowBttn)
@@ -53,19 +54,40 @@ function reactToMapShip(){
         document.getElementById('speed-input').style.backgroundColor = 'green'
         userInputSpeed = 1
         document.getElementById('pop-up-speed').style.display = 'none'
+        goReady()
     }
     
     document.getElementById('coast-bttn').addEventListener('click' , reactToCoastBttn)
     function reactToCoastBttn(){
-        document.getElementById('pop-up-speed').style. = 'inline'
+        document.getElementById('speed-input').innerHTML = 'Coast'
         document.getElementById('speed-input').style.backgroundColor = 'green'
         userInputSpeed = 0
         document.getElementById('pop-up-speed').style.display = 'none'
+        goReady()
+ }
+    document.getElementById('rotation-input').addEventListener('click' , reactToRotationInput)
+    function reactToRotationInput(){
+        document.getElementById('angle-input').style.display = 'flex'
+        document.getElementById('angle-input').addEventListener('keypress' , reactToAngleInput)}
+        function reactToAngleInput(e) {
+            if (e.key ===  'Enter'){
+                document.getElementById('angle-input').style.display = 'none'
+                document.getElementById('angle-input').removeEventListener('keypress', reactToAngleInput)
+                Number(document.getElementById('angle-input').value) >=360 || Number(document.getElementById('angle-input').value) < 0 ?
+                document.getElementById('rotation-input').style.backgroundColor = 'red' : (
+                document.getElementById('rotation-input').style.backgroundColor = 'green' ,
+                goReady())
 
+            }
  }
 
-
-
+    function goReady() {   //add to all pop up menu events
+        document.getElementById('speed-input').style.backgroundColor === 'green' &&
+        document.getElementById('rotation-input').style.backgroundColor === 'green' ? (
+        document.getElementById('launch').style.backgroundColor = 'Green' ,
+        document.getElementById('launch').addEventListener('click' , reactToLaunch)) :
+        0;
+    }
 
 
 
