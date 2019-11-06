@@ -76,10 +76,12 @@ function reactToMapShip(){
                 Number(document.getElementById('angle-input').value) >=360 || Number(document.getElementById('angle-input').value) < 0 ?
                 document.getElementById('rotation-input').style.backgroundColor = 'red' : (
                 document.getElementById('rotation-input').style.backgroundColor = 'green' ,
-                goReady())
-
+                goReady() ,
+                document.getElementById('rotation-input').innerHTML = `${document.getElementById('angle-input').value}` ,
+                userInputAngle = Number(document.getElementById('angle-input').value)
+                )
             }
- }
+        }
 
     function goReady() {   //add to all pop up menu events
         document.getElementById('speed-input').style.backgroundColor === 'green' &&
@@ -87,6 +89,17 @@ function reactToMapShip(){
         document.getElementById('launch').style.backgroundColor = 'Green' ,
         document.getElementById('launch').addEventListener('click' , reactToLaunch)) :
         0;
+    }
+    function reactToLaunch(){
+        document.getElementById('input-screen').style.display = 'none'
+        document.getElementById('map').style.display = 'flex'
+        document.getElementById('launch').removeEventListener('click' , reactToLaunch)
+        document.getElementById('launch').style.backgroundColor = 'red'
+        document.getElementById('speed-input').style.backgroundColor = 'white'
+        document.getElementById('speed-input').innerHTML = 'Speed'
+        document.getElementById('rotation-input').style.backgroundColor = 'white'
+        document.getElementById('rotation-input').innerHTML = 'Rotation'
+        turnStart()
     }
 
 
@@ -104,36 +117,41 @@ function reactToMapShip(){
 
 let userInputSpeed = 2 //Placeholder
 let userInputAngle = 45 //Placeholder
+let distanceTravX = 0
+let distanceTravY = 0
 
 function turnStart (){
-
-let distanceTravY = 0  // Placeholder Reassign to input 
-let distanceTravX = 0  // and if statements
 if (userInputAngle > 360) {
     return
 }
 else if (userInputAngle > 270){  // ◣ x , -y
     userInputAngle = userInputAngle - 270
+    userInputAngle = userInputAngle * (Math.PI/180)
     distanceTravX = Math.sin(userInputAngle) * userInputSpeed
     distanceTravY = Math.cos(userInputAngle) * userInputSpeed * -1
+    movementAndRotation()
 }
 else if (userInputAngle > 180){  // ◤ -x , -y
     userInputAngle = userInputAngle - 180
+    userInputAngle = userInputAngle * (Math.PI/180)
     distanceTravX = Math.sin(userInputAngle) * userInputSpeed * -1
     distanceTravY = Math.cos(userInputAngle) * userInputSpeed * -1
-
+    movementAndRotation()
 }
 else if (userInputAngle > 90){  // ◥ -x , y
     userInputAngle = userInputAngle - 90
+    userInputAngle = userInputAngle * (Math.PI/180)
     distanceTravX = Math.sin(userInputAngle) * userInputSpeed * -1
     distanceTravY = Math.cos(userInputAngle) * userInputSpeed
+    movementAndRotation()
 }                                                  
 else if (userInputAngle >= 0){  // ◢ x , y
+    userInputAngle = userInputAngle * (Math.PI/180)
     distanceTravY = Math.sin(userInputAngle) * userInputSpeed
     distanceTravX = Math.cos(userInputAngle) * userInputSpeed
+    movementAndRotation()
 }
 
-movementAndRotation()
 }
 
 function movementAndRotation(){
@@ -144,12 +162,14 @@ function movementAndRotation(){
     currentSpeed = Math.sqrt((xSpeed * xSpeed) + (ySpeed * ySpeed))
     distanceTraveled = distanceTraveled + currentSpeed
     //Helps determine the distance for scoring
-    shipOrientation = Math.atan(Math.abs(xSpeed) / Math.abs(ySpeed)) * (180 / Math.PI)
+    shipOrientation = Math.abs(Math.atan((ySpeed) / (xSpeed)) * (180/Math.PI))
 if (xSpeed >= 0){ //positive x
-    ySpeed >= 0 ? 0 : shipOrientation = shipOrientation + 270 ;
+    ySpeed >= 0 ? document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)` : 
+    (shipOrientation = shipOrientation + 270 , document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) ;
     }
 else if (xSpeed < 0){ //negative x
-    ySpeed >= 0 ? shipOrientation = shipOrientation + 90 : shipOrientation = shipOrientation + 180;
+    ySpeed >= 0 ? shipOrientation = (shipOrientation + 90 , document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) :
+    (shipOrientation = shipOrientation + 180 , document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`);
     }
 
 }
