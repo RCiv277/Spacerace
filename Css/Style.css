@@ -1,6 +1,9 @@
 
 body{
-    background-color:black
+    background-color: black;
+    background-image: url(../Image/space.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 button{
     background-color: white;
