@@ -63,7 +63,10 @@ function reactToMapShip(){
         goReady()
     }
     document.getElementById('to-map').addEventListener('click' , reactToReturn)
-    function
+    function reactToReturn(){
+        document.getElementById('map').style.display = 'flex'
+        document.getElementById('input-screen').style.display = 'none'
+    }
     
     document.getElementById('coast-bttn').addEventListener('click' , reactToCoastBttn)
     function reactToCoastBttn(){
