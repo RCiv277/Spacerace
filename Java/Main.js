@@ -62,6 +62,8 @@ function reactToMapShip(){
         document.getElementById('pop-up-speed').style.display = 'none'
         goReady()
     }
+    document.getElementById('to-map').addEventListener('click' , reactToReturn)
+    function
     
     document.getElementById('coast-bttn').addEventListener('click' , reactToCoastBttn)
     function reactToCoastBttn(){

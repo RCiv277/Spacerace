@@ -91,8 +91,8 @@ h2{
     top: 50%;
     display: block;
     margin: 0 auto;
-    height: 70px;
-    width: 70px;
+    height: 110px;
+    width: 110px;
     left: 50%;
     transform-origin: center;
 }
