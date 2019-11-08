@@ -6,6 +6,9 @@ let xSpeed = 0
 let ySpeed = 0 
 let shipOrientation = 0
 let currentSpeed = 0
+let xPosition = 48.5
+let yPosition = 32.5
+let playerName = ''
 /** 
  * Main Menu
  * 
@@ -14,6 +17,9 @@ document.getElementById('play').addEventListener('click' , reactToPlay)  //play
 function reactToPlay(){
     document.getElementById('main-menus').style.display = 'none'
     document.getElementById('map').style.display = 'flex'
+    document.getElementById('body-el').style.backgroundSize = '300%'
+    document.getElementById('body-el').style.backgroundPositionX = `${xPosition}%`
+    document.getElementById('body-el').style.backgroundPositionY = `${yPosition}%`
 }
 document.getElementById('rules').addEventListener('click' , reactToRules) //direction
 function reactToRules(){
@@ -125,21 +131,22 @@ function turnStart (){
 if (userInputAngle > 360) {
     return
 }
-else if (userInputAngle > 270){  // ◣ x , -y
+else if (userInputAngle >= 270){  // ◣ x , -y
     userInputAngle = userInputAngle - 270
     userInputAngle = userInputAngle * (Math.PI/180)
     distanceTravX = Math.sin(userInputAngle) * userInputSpeed
     distanceTravY = Math.cos(userInputAngle) * userInputSpeed * -1
     movementAndRotation()
 }
-else if (userInputAngle > 180){  // ◤ -x , -y
+else if (userInputAngle >= 180){  // ◤ -x , -y
+    console.log('hello')
     userInputAngle = userInputAngle - 180
     userInputAngle = userInputAngle * (Math.PI/180)
-    distanceTravX = Math.sin(userInputAngle) * userInputSpeed * -1
-    distanceTravY = Math.cos(userInputAngle) * userInputSpeed * -1
+    distanceTravY = Math.sin(userInputAngle) * userInputSpeed * -1
+    distanceTravX = Math.cos(userInputAngle) * userInputSpeed * -1
     movementAndRotation()
 }
-else if (userInputAngle > 90){  // ◥ -x , y
+else if (userInputAngle >= 90){  // ◥ -x , y
     userInputAngle = userInputAngle - 90
     userInputAngle = userInputAngle * (Math.PI/180)
     distanceTravX = Math.sin(userInputAngle) * userInputSpeed * -1
@@ -157,28 +164,43 @@ else if (userInputAngle >= 0){  // ◢ x , y
 
 function movementAndRotation(){
     xSpeed = distanceTravX + xSpeed
+    xPosition = xPosition + (xSpeed * 1.5)
+    document.getElementById('body-el').style.backgroundPositionX = `${xPosition}%`
 //Accumulates speed along the x axis
     ySpeed = distanceTravY + ySpeed
+    yPosition = yPosition + (ySpeed * -1)
+    document.getElementById('body-el').style.backgroundPositionY = `${yPosition}%`
 //Accumulates speed along the y axis
     currentSpeed = Math.sqrt((xSpeed * xSpeed) + (ySpeed * ySpeed))
     distanceTraveled = distanceTraveled + currentSpeed
     //Helps determine the distance for scoring
-if (xSpeed >= 0){ //positive x
-    ySpeed >= 0.001 ? ((shipOrientation = Math.abs(Math.atan((ySpeed) / (xSpeed)) * (180/Math.PI))) ,       // ◢ x , y
-    document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)` ) : 
-    ((shipOrientation = Math.abs(Math.atan((xSpeed) / (ySpeed)) * (180/Math.PI)) ,                          // ◣ x , -y
-    (shipOrientation = shipOrientation + 270)) ,
-    document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) ;
+    if(xPosition < -26 || xPosition > 123 || yPosition > 82 || yPosition < -22){
+        youHaveLost()
     }
-else if (xSpeed < 0){ //negative x
-    ySpeed >= 0.001 ? ((shipOrientation = Math.abs(Math.atan((xSpeed) / (ySpeed)) * (180/Math.PI))),        // ◥ -x , y
-    (shipOrientation = shipOrientation + 90) ,
-    document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) :           // ◤ -x , -y
-    ((shipOrientation = Math.abs(Math.atan((xSpeed) / (ySpeed)) * (180/Math.PI))), 
-    (shipOrientation = shipOrientation + 180) , 
-    document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`);
+    if (xSpeed >= -0.001){ //positive x
+        ySpeed >= 0.001 ? ((shipOrientation = Math.abs(Math.atan((ySpeed) / (xSpeed)) * (180/Math.PI))) ,       // ◢ x , y
+        document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)` ) : 
+        ((shipOrientation = Math.abs(Math.atan((xSpeed) / (ySpeed)) * (180/Math.PI)) ,                          // ◣ x , -y
+        (shipOrientation = shipOrientation + 270)) ,
+        document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) ;
+    }
+    else if (xSpeed < 0.001){ //negative x
+        ySpeed >= -0.001 ? ((shipOrientation = Math.abs(Math.atan((xSpeed) / (ySpeed)) * (180/Math.PI))),        // ◥ -x , y
+        (shipOrientation = shipOrientation + 90) ,
+        document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`) :           // ◤ -x , -y
+        ((shipOrientation = Math.abs(Math.atan((ySpeed) / (xSpeed)) * (180/Math.PI))), 
+        (shipOrientation = shipOrientation + 180) , 
+        document.getElementById('map-ship').style.transform = `rotate(${shipOrientation * -1}deg)`);
     }
     // Sets the orientation for which direction the ship will be facing after computations
+}
+
+function youHaveLost(){
+    document.getElementById('perished-screen').style.display = 'grid'
+    document.getElementById('map').style.display = 'none'
+    document.getElementById('name').innerHTML = 'Name: Inputted Name'
+    document.getElementById('distance-traveled').innerHTML = `Distance Traversed: ${distanceTraveled}`
+    document.getElementById('ship-orientation').innerHTML = `Ship Orientation: ${shipOrientation}%`
 }
 
 /**
